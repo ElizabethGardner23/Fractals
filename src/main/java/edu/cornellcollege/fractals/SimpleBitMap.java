@@ -1,5 +1,6 @@
 package edu.cornellcollege.fractals;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
@@ -8,27 +9,22 @@ import java.awt.image.WritableRaster;
 import javax.swing.JPanel;
 
 /**
- * The SimpleBitMap class draws a portion of the Mandelbrot set in the panel.
- * 
+ * The SimpleBitMap class draws a portion of the Mandelbrot set in the panel
+ * made in the Simple class.
+ *
  * @author Elizabeth Gardner
- * @version 13 April 2020
+ * @version 14 April 2020
  */
 public class SimpleBitMap extends JPanel {
 
     private static final int BITMAP_WIDTH = 512;
     private static final int BITMAP_HEIGHT = 512;
     private static final int THRESHOLD = 50;
-    private final BufferedImage image;
+    private BufferedImage image;
 
-    private static final double U_MIN = 0.75;
-    private static final double U_MAX = 1.25;
-    private static final double V_MIN = -0.75;
-    private static final double V_MAX = 0.25;
-    private static final int X_MIN = 0;
-    private static final int X_MAX = 499;
-    private static final int Y_MIN = 0;
-    private static final int Y_MAX = 499;
-
+    /**
+     * The SimpleBitMap constructor establishes the values of some parameters.
+     */
     public SimpleBitMap() {
         int w = BITMAP_WIDTH;
         int h = BITMAP_HEIGHT;
@@ -36,6 +32,12 @@ public class SimpleBitMap extends JPanel {
         this.image = new BufferedImage(w, h, imageType);
     } // SimpleBitMap()
 
+    /**
+     * The paintComponent method models a designated portion of the Mandelbrot
+     * set on the screen.
+     *
+     * @param g a 2D graphic
+     */
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -50,38 +52,65 @@ public class SimpleBitMap extends JPanel {
 
         WritableRaster raster = this.image.getRaster();
 
-        int[] black = {0, 0, 0};
+        int[][] palatte = new int[64][3];
+
+        Color startColor = Color.RED;
+        int r0 = startColor.getRed();
+        int g0 = startColor.getGreen();
+        int b0 = startColor.getBlue();
+
+        Color endColor = Color.BLUE;
+        int r1 = endColor.getRed();
+        int g1 = endColor.getGreen();
+        int b1 = endColor.getBlue();
+
+        for (int i = 0; i < 64; i++) {
+            palatte[i][0] = (int) (256 * Math.random());
+            palatte[i][1] = (int) (256 * Math.random());
+            palatte[i][2] = (int) (256 * Math.random());
+        } // for
+
+        int[] blue = {0, 0, 255};
         int[] yellow = {255, 255, 0};
 
-        for (int y = 0; y < h; y++) {
-            for (int x = 0; x < w; x++) {
+        double uMin = -1.25;
+        double uMax = 1.25;
+        double vMin = -1.25;
+        double vMax = 1.25;
+        double xMin = 0;
+        double xMax = BITMAP_WIDTH - 1;
+        double yMin = 0;
+        double yMax = BITMAP_HEIGHT - 1;
 
-                for (int row = 0; row < HEIGHT; row++) {
-                    for (int column = 0; column < WIDTH; column++) {
+        for (int row = 0; row < BITMAP_HEIGHT; row++) {
+            double y = row;
+            for (int column = 0; column < BITMAP_WIDTH; column++) {
+                double x = column;
 
-                        // Create z with components (0.0, 0.0)            
-                        Complex z = new Complex(0, 0);
+                // Create z with components (0.0, 0.0)            
+                Complex z = new Complex(0.0, 0.0);
 
-                        // Create c with components map(row, column)
-                        double u = U_MIN + (U_MAX - U_MIN) * (x - X_MIN) / (X_MAX - X_MIN);
-                        double v = V_MIN + (V_MAX - V_MIN) * (y - Y_MIN) / (Y_MAX - Y_MIN);
+                // Create c with components map(row, column)
+                double u = uMin + (uMax - uMin) * (x - xMin) / (xMax - xMin);
+                double v = vMin + (vMax - vMin) * (y - yMin) / (yMax - yMin);
 
-                        Complex c = new Complex(u, v);
+                Complex c = new Complex(u, v);
 
-                        int count = 0;
-                        while (z.magnitude() < 2.0 && count < THRESHOLD) {
-                            z = z.multiplyComplex(z);
-                            z = z.addComplex(c);
-                            count++;
-                        } // while
+                int count = 0;
+                while (z.magnitudeSquared() < 4.0 && count < 64) {
+                    z = z.multiplyComplex(z);
+                    z = z.addComplex(c);
+                    count++;
+                } // while
 
-                        // use count to assign a color to the pixel
-                        // at (row, column)
-                        int[] color = {150, count, 150};
-                        raster.setPixel(x, y, color);
-
-                    } // for
-                } // for
+                // use count to assign a color to the pixel
+                // at (row, column)
+                if (count == 64) {
+                    raster.setPixel(row, column, yellow);
+                } // if
+                else {
+                    raster.setPixel(row, column, palatte[count]);
+                } // else
             } // for
         } // for
 
