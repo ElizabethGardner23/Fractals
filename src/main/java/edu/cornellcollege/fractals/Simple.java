@@ -1,22 +1,19 @@
 package edu.cornellcollege.fractals;
 
-import java.awt.Color;
-import java.awt.Component;
 import java.awt.Container;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.Timer;
 
 /**
- *
+ * The Simple class creates a window where the Mandelbrot set can be modeled.
+ * 
  * @author Elizabeth Gardner
- * @version 12 April 2020
+ * @version 13 April 2020
  */
 public class Simple extends JFrame {
     
-    private static final int SIMPLE_WIDTH = 512;
-    private static final int SIMPLE_HEIGHT = 512;
-    private static final String SIMPLE_TITLE = "Simple";
+    private static final int SIMPLE_WIDTH = 500;
+    private static final int SIMPLE_HEIGHT = 500;
+    private static final String SIMPLE_TITLE = "Modeling the Mandelbrot Set";
     
     public Simple() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -25,23 +22,8 @@ public class Simple extends JFrame {
         
         Container pane = this.getContentPane();
         
-//        JPanel panel = new JPanel();
-//        panel.setBackground(Color.CYAN);
-//        pane.add(panel);
-        
-//        SimplePicture panel = new SimplePicture();
-//        pane.add(panel);
-        
-//        SimpleBitmap panel = new SimpleBitmap();
-//        pane.add(panel);
-        
-//        SimpleImage panel = new SimpleImage();
-//        pane.add(panel);
-        
-//        SimpleAnimation panel = newSimpleAnimation();
-//        pane.add(panel);
-//        Timer timer = new Timer(20, panel);
-//        timer.start();
+        SimpleBitMap panel = new SimpleBitMap();
+        pane.add(panel);
         
         this.setVisible(true);
     } // Simple()

@@ -10,8 +10,8 @@ package edu.cornellcollege.fractals;
  */
 public class Complex {
     
-    private double real;
-    private double imaginary;
+    public double real;
+    public double imaginary;
     
     /**
      * The Complex() constructor creates a new complex number with no designated
