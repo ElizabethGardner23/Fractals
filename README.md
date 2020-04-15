@@ -1,5 +1,5 @@
 # Fractals
-This project contains three methods that work together to model the Mandelbrot set in a window.
+This project contains three classes that work together to model the Mandelbrot set in a window.
 
 ## Features
 The Simple class creates the window, the Complex class contains methods to model and perform operations on complex numbers, 
