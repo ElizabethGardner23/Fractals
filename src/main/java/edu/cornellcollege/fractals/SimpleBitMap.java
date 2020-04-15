@@ -9,8 +9,8 @@ import java.awt.image.WritableRaster;
 import javax.swing.JPanel;
 
 /**
- * The SimpleBitMap class draws a portion of the Mandelbrot set in the panel
- * made in the Simple class. Based on code from Professor Tabak.
+ * The SimpleBitMap class draws a portion of the Mandelbrot set or a Julia set
+ * in the panel made in the Simple class. Based on code from Professor Tabak.
  *
  * @author Elizabeth Gardner
  * @version 14 April 2020
@@ -34,7 +34,7 @@ public class SimpleBitMap extends JPanel {
 
     /**
      * The paintComponent method models a designated portion of the Mandelbrot
-     * set on the screen.
+     * set or a Julia set on the screen.
      *
      * @param g a 2D graphic
      */

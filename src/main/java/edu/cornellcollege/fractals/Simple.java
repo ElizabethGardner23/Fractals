@@ -14,7 +14,7 @@ public class Simple extends JFrame {
     
     private static final int SIMPLE_WIDTH = 500;
     private static final int SIMPLE_HEIGHT = 500;
-    private static final String SIMPLE_TITLE = "Modeling the Mandelbrot Set";
+    private static final String SIMPLE_TITLE = "Modeling Mandelbrot and Julia Sets";
     
     /**
      * The Simple constructor creates a window on the screen.
@@ -34,6 +34,7 @@ public class Simple extends JFrame {
     
     /**
      * The main method executes the constructor.
+     * 
      * @param args 
      */
     public static void main(String[] args) {

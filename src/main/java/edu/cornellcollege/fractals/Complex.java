@@ -23,11 +23,12 @@ public class Complex {
     
     /**
      * The Complex(double, double) constructor creates a new complex number with
-     * a designated value for the real and imaginary elements. Code found here:
+     * a designated value for the real and imaginary components. Code found here:
      * https://www.geeksforgeeks.org/program-to-add-and-subtract-complex-numbers-using-class-in-java/.
      * 
-     * @param tempReal the double value of the real part of the complex number
-     * @param tempImaginary the double value of the imaginary part of the
+     * @param tempReal the double value of the real component of the complex
+     * number
+     * @param tempImaginary the double value of the imaginary component of the
      * complex number
      */
     public Complex(double tempReal, double tempImaginary) {
@@ -36,49 +37,51 @@ public class Complex {
     } // Complex(double, double)
     
     /**
-     * The getReal accessor method returns the real element of a complex number.
+     * The getReal accessor method returns the real component of a complex
+     * number.
      * 
-     * @return the double real element of a complex number
+     * @return the double real component of a complex number
      */
     public double getReal() {
         return this.real;
     } // getReal()
     
     /**
-     * The getImaginary accessor method returns the imaginary element of a
+     * The getImaginary accessor method returns the imaginary component of a
      * complex number.
      * 
-     * @return the double imaginary element of a complex number
+     * @return the double imaginary component of a complex number
      */
     public double getImaginary() {
         return this.imaginary;
     } // getImaginary()
     
     /**
-     * The setReal mutator method changes the real element of a complex number
+     * The setReal mutator method changes the real component of a complex number
      * to a designated value.
      * 
-     * @param value the new double value of the real element of a complex number
+     * @param value the new double value of the real component of a complex
+     * number
      */
     public void setReal(double value) {
         this.real = value;
     } // setReal(double)
     
     /**
-     * The setImaginary mutator method changes the imaginary element of a
+     * The setImaginary mutator method changes the imaginary component of a
      * complex number to a designated value.
      * 
-     * @param value the new double value of the imaginary element of a complex
+     * @param value the new double value of the imaginary component of a complex
      * number
      */
     public void setImaginary(double value) {
         this.imaginary = value;
-    } // setImaginary()
+    } // setImaginary(double)
     
     /**
      * The addComplex method calculates the sum of two complex numbers by
-     * separately adding their real and imaginary elements. Based on code found
-     * here:
+     * separately adding their real and imaginary components. Based on code
+     * found here:
      * https://www.geeksforgeeks.org/program-to-add-and-subtract-complex-numbers-using-class-in-java/.
      * 
      * @param otherComplex the complex number being added
@@ -92,8 +95,8 @@ public class Complex {
     } // addComplex(Complex)
     
     /**
-     * The subtractComplex method calculates the difference of two complex
-     * numbers by separately subtracting their real and imaginary elements.
+     * The subtractComplex method calculates the difference between two complex
+     * numbers by separately subtracting their real and imaginary components.
      * Based on code found here:
      * https://www.geeksforgeeks.org/program-to-add-and-subtract-complex-numbers-using-class-in-java/.
      * 
@@ -141,7 +144,7 @@ public class Complex {
      * The magnitudeSquared method returns the square of the magnitude of a
      * complex number.
      * 
-     * @return the magnitude of a complex number squared
+     * @return the square of the double magnitude of a complex number
      */
     public double magnitudeSquared() {
         
@@ -154,7 +157,7 @@ public class Complex {
     
     /**
      * The toString method produces a String representation of a complex number
-     * by separating the real and imaginary element by a plus sign and putting
+     * by separating the real and imaginary components by a plus sign and putting
      * an "i" after the imaginary value.
      * 
      * @return a String representation of a complex number
