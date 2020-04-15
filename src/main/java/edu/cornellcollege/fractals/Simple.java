@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 
 /**
  * The Simple class creates a window where the Mandelbrot set can be modeled.
+ * Code from Professor Tabak.
  * 
  * @author Elizabeth Gardner
  * @version 14 April 2020
